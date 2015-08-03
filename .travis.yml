@@ -1,14 +1,17 @@
 language:
-    - nodejs
+    - node_js
 
-nodejs:
+node_js:
     - "0.12"
 
+git:
+    depth: 10
+
 before_install:
-    - curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -
-    - sudo apt-get install -y nodejs
     - sudo npm install -g bower phantomjs gulp
 
 install:
     - bower install
 
+env:
+    - NODE_ENV=development
