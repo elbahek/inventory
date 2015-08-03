@@ -4,8 +4,8 @@
     "description": "Rpg inventory tracker",
     "author": "Ivan Abdulin <ivan.abdulin@gmail.com>",
     "scripts": {
-        "test": "echo 'No tests for now' && exit 1",
-        "start": "echo 'No start script for now' && exit 1"
+        "test": "echo 'No tests for now' && exit 0",
+        "start": "echo 'No start script for now' && exit 0"
     },
     "repository": {
         "type": "git",
