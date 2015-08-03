@@ -7,10 +7,8 @@ node_js:
 git:
     depth: 10
 
-before_install:
-    - sudo npm install -g bower phantomjs gulp
-
 install:
+    - npm install -g bower phantomjs gulp
     - bower install
 
 env:
