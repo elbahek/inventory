@@ -1,0 +1,15 @@
+language:
+    - node_js
+
+node_js:
+    - "0.12"
+
+git:
+    depth: 10
+
+install:
+    - npm install -g bower phantomjs gulp
+    - bower install
+
+env:
+    - NODE_ENV=development

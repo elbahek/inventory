@@ -1,0 +1,20 @@
+{
+    "name": "inventory",
+    "version": "0.0.1",
+    "description": "Rpg inventory tracker",
+    "author": "Ivan Abdulin <ivan.abdulin@gmail.com>",
+    "scripts": {
+        "test": "echo 'No tests for now' && exit 0",
+        "start": "echo 'No start script for now' && exit 0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/elbahek/inventory.git"
+    },
+    "dependencies": {
+        "express": "^4.13.1"
+    },
+    "devDependencies": {},
+    "private": true,
+    "license": "GPL-2.0"
+}

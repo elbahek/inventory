@@ -1,0 +1,7 @@
+# ide
+.idea
+*.sublime-*
+
+# Package dirs
+/node_modules
+/bower_components
