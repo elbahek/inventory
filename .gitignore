@@ -5,3 +5,15 @@
 # Package dirs
 /node_modules
 /bower_components
+
+# Compiled project
+/dist
+
+# Local config
+/config/local.js
+
+# Node logs
+/logs
+
+# SSL keys and certs
+/ssl
