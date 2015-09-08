@@ -8,6 +8,10 @@ module.exports = function(defaultConfig) {
   var localConfig = {};
   localConfig.server = {
     /**
+     * Ip is different for every server
+     */
+    ip: '192.168.1.101',
+    /**
      * Path to your ssl key and certificate
      * required
      */

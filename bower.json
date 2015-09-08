@@ -1,26 +1,34 @@
 {
-    "name": "inventory",
-    "version": "0.0.1",
-    "description": "Rpg inventory tracker",
-    "authors": [
-        {"name": "Ivan Abdulin", "email": "ivan.abdulin@gmail.com"}
-    ],
-    "dependencies": {
-        "ionicons": "~2.0.1"
-    },
-    "devDependencies": {},
-    "moduleType": "es6",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/elbahek/inventory.git"
-    },
-    "license": "GPL-2.0",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "private": true
+  "name": "inventory",
+  "version": "0.0.1",
+  "description": "Rpg inventory tracker",
+  "authors": [
+    {
+      "name": "Ivan Abdulin",
+      "email": "ivan.abdulin@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "ionicons": "~2.0.1",
+    "bourbon": "~4.2.4",
+    "neat": "~1.7.2",
+    "bitters": "~1.1.0",
+    "angular": "~1.4.5",
+    "angular-route": "~1.4.5"
+  },
+  "devDependencies": {},
+  "moduleType": "es6",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elbahek/inventory.git"
+  },
+  "license": "GPL-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "private": true
 }

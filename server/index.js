@@ -1,3 +1,4 @@
+/* global ENV_DEVELOPMENT, ENV_STAGE, ENV_PRODUCTION */
 'use strict';
 
 // Get config values
@@ -41,10 +42,7 @@ catch (e) {
 }
 
 // Routing
-//var router = require('./router').init(app, config);
-app.get('/', function(req, res) {
-  res.send('hello');
-});
+require('./router').init(app, serverConfig);
 
 // Start server
 var httpsServer = https.createServer(credentials, app);

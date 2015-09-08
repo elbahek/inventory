@@ -1,3 +1,4 @@
+/* global ENV_DEVELOPMENT, ENV_STAGE, ENV_PRODUCTION */
 'use strict';
 
 var path = require('path'),
@@ -20,26 +21,36 @@ module.exports = function(section) {
 
   var config = {};
   var siteDir = path.normalize(__dirname + '/..');
+  var appDir = siteDir + '/app';
+  var assets = require('./assets')(siteDir);
 
   config.server = {
     environment: environment,
+    ip: null,
     port: 443,
     sslKeyFile: null,
     sslCertFile: null,
     siteDir: siteDir,
+    distDir: siteDir + '/dist',
+    serverDir: siteDir + '/server',
+    configDir: siteDir + '/config',
+    appDir: appDir,
+    inventoryModuleDir: appDir + '/inventory',
     log: {
       path: siteDir + '/logs/server.log',
       size: 200000,
       maxFiles: 8
-    }
+    },
+    assets: assets
   };
 
   config.app = {
     environment: environment
   };
 
+  var localConfig = {};
   try {
-    var localConfig = require('./local')(config);
+    localConfig = require('./local')(config);
   }
   catch (e) {
     if (e.code === 'MODULE_NOT_FOUND') {
