@@ -2,6 +2,7 @@
 
 var _ = require('lodash'),
   path = require('path'),
+  fs = require('fs'),
   gulp = require('gulp'),
   browserSync = require('browser-sync'),
   developServer = require('gulp-develop-server'),
@@ -212,8 +213,27 @@ gulp.task('clean', function() {
   ]);
 });
 
+// check ssl cert files, config/local.js
+gulp.task('checkFiles', function() {
+  fs.stat(config.sslKeyFile, function(error, stats) {
+    if (error) {
+      console.log('SSL key cannot be read', error);
+    }
+  });
+  fs.stat(config.sslCertFile, function(error, stats) {
+    if (error) {
+      console.log('SSL certificate cannot be read', error);
+    }
+  });
+  fs.stat(config.configDir + '/local.js', function(error, stats) {
+    if (error) {
+      console.log('config/local.js cannot be read, probably you forgot to add it', error);
+    }
+  });
+});
 
-gulp.task('development', [
+
+gulp.task('serve', [
   'developServerStart', // synchronous
   'browserSync', // synchronous
   'jshint',
@@ -225,8 +245,9 @@ gulp.task('development', [
   'watch'
 ]);
 
-gulp.task('production', [
+gulp.task('deployStage', [
   'clean', // synchronous
+  'checkFiles',
   'copyFonts',
   'copyMisc',
   'copyAppViews',
@@ -234,4 +255,4 @@ gulp.task('production', [
 ]);
 
 
-gulp.task('default', ['development']);
+gulp.task('default', ['serve']);
