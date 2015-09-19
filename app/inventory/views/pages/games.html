@@ -1,0 +1,22 @@
+<div ng-controller="gamesController" class="page" ng-class="bodyClassValue">
+  <v-accordion control="gamesAccordion" id="games-accordion">
+    <v-pane ng-repeat="game in games | orderBy: ['-isActive', '-isOngoing', 'isLocal', '-lastPlayed'] track by game.uuid">
+      <v-pane-header>
+        <img src="/images/icons/rolling-dice.gif" ng-show="game.isActive">
+        <h4>{{game.name}}!</h4>
+        <div class="last-played-from-now">{{game.lastPlayedDateHuman}}</div>
+      </v-pane-header>
+      <v-pane-content>
+        <div class="pane-content-wrapper">
+          <ul>
+            <li>Id: {{game.uuid}}</li>
+            <li>Active: {{game.isActive}}</li>
+            <li>Ongoing: {{game.isOngoing}}</li>
+            <li>Local: {{game.isLocal}}</li>
+            <li>Last played: {{game.lastPlayedDate}}</li>
+          </ul>
+        </div>
+      </v-pane-content>
+    </v-pane>
+  </v-accordion>
+</div>

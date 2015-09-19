@@ -1,0 +1,42 @@
+v-accordion {
+  display: block;
+  v-pane {
+    display: block;
+    border: {
+      top: 1px solid $accordion-border-color;
+      left: 1px solid $accordion-border-color;
+      right: 1px solid $accordion-border-color;
+    };
+    &:last-child {
+      border-bottom: 1px solid $accordion-border-color;
+    }
+    v-pane-header {
+      display: block;
+      outline: none;
+      padding: 0.5em 1em;
+      cursor: pointer;
+      @include user-select(none);
+      background-color: $accordion-bg-color;
+      &:hover {
+        background-color: $accordion-hover-color;
+      }
+    }
+    v-pane-content {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      @include transition(max-height 0.8s);
+      .pane-content-wrapper {
+        padding: 1em;
+      }
+    }
+    &.is-expanded {
+      v-pane-header {
+        background-color: $accordion-hover-color;
+      }
+      v-pane-content {
+        max-height: 20em !important;
+      }
+    }
+  }
+}

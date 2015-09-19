@@ -1,0 +1,22 @@
+.page-games {
+  #games-accordion {
+    @include span-columns(12);
+    v-pane-header {
+      h4 {
+        display: inline-block;
+      }
+      img {
+        display: inline-block;
+        margin-bottom: -4px;
+      }
+      .last-played-from-now {
+        float: right;
+        font-size: $small-text;
+      }
+    }
+  }
+  h4 {
+    margin-bottom: 0;
+    @include user-select(none);
+  }
+}

@@ -18,8 +18,7 @@ var _ = require('lodash'),
   minify = require('gulp-minify-css'),
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
-  advancedWatch = require('gulp-watch'),
-  gulpUtil = require('gulp-util');
+  advancedWatch = require('gulp-watch');
 
 var config = require('./config')('server');
 
@@ -76,7 +75,8 @@ gulp.task('copyMisc', function() {
 var jshintedFiles = [
   'gulpfile.js',
   config.serverDir + '/**/*.js',
-  config.configDir + '/**/*.js'
+  config.configDir + '/**/*.js',
+  config.appDir + '/**/*.js'
 ];
 jshintedFiles.concat(config.assets.scripts.app);
 // check all js files with jshint
@@ -194,8 +194,11 @@ gulp.task('watch', function() {
   advancedWatch(config.inventoryModuleDir + '/**/*.js', {usePolling: true}, function() {
     gulp.start('browserReloadOnAppScripts');
   });
-  advancedWatch(config.inventoryModuleDir + '/assets/sass/**/*.scss', {usePolling: true}, function() {
+  advancedWatch(config.inventoryModuleDir + '/assets/**/*.scss', {usePolling: true}, function() {
     gulp.start('copyAppStyles');
+  });
+  advancedWatch(config.publicDir + '/**/*.*', {usePolling: true}, function() {
+    gulp.start('copyMisc');
   });
 });
 
@@ -203,29 +206,23 @@ gulp.task('watch', function() {
 gulp.task('clean', function() {
   del([
     config.siteDir + '/logs/*',
-    config.distDir + '/**/*',
-    config.distDir + '/*',
-    '!' + config.distDir + '/views',
-    '!' + config.distDir + '/js',
-    '!' + config.distDir + '/css',
-    '!' + config.distDir + '/fonts',
-    '!.gitkeep'
+    config.distDir + '/*'
   ]);
 });
 
 // check ssl cert files, config/local.js
 gulp.task('checkFiles', function() {
-  fs.stat(config.sslKeyFile, function(error, stats) {
+  fs.stat(config.sslKeyFile, function(error) {
     if (error) {
       console.log('SSL key cannot be read', error);
     }
   });
-  fs.stat(config.sslCertFile, function(error, stats) {
+  fs.stat(config.sslCertFile, function(error) {
     if (error) {
       console.log('SSL certificate cannot be read', error);
     }
   });
-  fs.stat(config.configDir + '/local.js', function(error, stats) {
+  fs.stat(config.configDir + '/local.js', function(error) {
     if (error) {
       console.log('config/local.js cannot be read, probably you forgot to add it', error);
     }

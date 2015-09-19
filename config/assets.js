@@ -20,11 +20,17 @@ module.exports = function(siteDir) {
     },
     scripts: {
       thirdParty: [
+        bowerDir + '/node-uuid/uuid.js',
+        bowerDir + '/moment/moment.js',
         bowerDir + '/angular/angular.js',
-        bowerDir + '/angular-route/angular-route.js'
+        bowerDir + '/angular-route/angular-route.js',
+        bowerDir + '/angular-animate/angular-animate.js',
+        bowerDir + '/v-accordion/dist/v-accordion.js'
       ],
       app: [
-        inventoryModuleDir + '/inventory.module.js'
+        inventoryModuleDir + '/inventory.module.js',
+        inventoryModuleDir + '/controllers/mixins/bodyClass.js',
+        inventoryModuleDir + '/controllers/games.js'
       ]
     }
   };
