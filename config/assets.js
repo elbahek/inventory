@@ -29,7 +29,7 @@ module.exports = function(siteDir) {
       ],
       app: [
         inventoryModuleDir + '/inventory.module.js',
-        inventoryModuleDir + '/controllers/mixins/bodyClass.js',
+        inventoryModuleDir + '/util/mixins/BodyClass.js',
         inventoryModuleDir + '/controllers/games.js'
       ]
     }

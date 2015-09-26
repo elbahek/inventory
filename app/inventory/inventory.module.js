@@ -1,12 +1,12 @@
 /* global angular */
 'use strict';
 
-var inventoryModule = angular.module('inventoryModule', [
+var InventoryModule = angular.module('InventoryModule', [
   'ngRoute',
   'vAccordion'
 ]);
 
-inventoryModule.config(function($routeProvider) {
+InventoryModule.config(function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: '/views/pages/main.html'
