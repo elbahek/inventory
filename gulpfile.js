@@ -226,7 +226,7 @@ gulp.task('watch', function() {
 
 // clean task (run to clean public dirs, build dirs etc)
 gulp.task('clean', function() {
-  del([
+  del.sync([
     config.siteDir + '/logs/*',
     config.distDir + '/*',
     config.buildDir + '/*'
