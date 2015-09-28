@@ -2,7 +2,8 @@
 
 module.exports = function(siteDir) {
   var bowerDir = siteDir + '/bower_components',
-    inventoryModuleDir = siteDir + '/app/inventory';
+    inventoryModuleDir = siteDir + '/app/inventory',
+    buildDir = siteDir + '/build';
   return {
     fonts: {
       thirdParty: [
@@ -29,6 +30,7 @@ module.exports = function(siteDir) {
       ],
       app: [
         inventoryModuleDir + '/inventory.module.js',
+        buildDir + '/inventory.config.js',
         inventoryModuleDir + '/util/mixins/BodyClass.js',
         inventoryModuleDir + '/controllers/games.js'
       ]

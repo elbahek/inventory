@@ -3,6 +3,7 @@
 var _ = require('lodash'),
   path = require('path'),
   fs = require('fs'),
+  stream = require('stream'),
   gulp = require('gulp'),
   browserSync = require('browser-sync'),
   developServer = require('gulp-develop-server'),
@@ -18,6 +19,8 @@ var _ = require('lodash'),
   minify = require('gulp-minify-css'),
   sass = require('gulp-sass'),
   sourcemaps = require('gulp-sourcemaps'),
+  gutil = require('gulp-util'),
+  ngConstant = require('gulp-ng-constant'),
   advancedWatch = require('gulp-watch');
 
 var config = require('./config')('server');
@@ -72,6 +75,25 @@ gulp.task('copyMisc', function() {
     .pipe(gulp.dest(config.distDir));
 });
 
+// generate angular app config from server config
+gulp.task('generateAppConfig', function() {
+  var appConfig = require('./config')('app');
+  appConfig = JSON.stringify(appConfig);
+
+  var appConfigSrc = stream.Readable({objectMode: true});
+  appConfigSrc._read = function() {
+    this.push(new gutil.File({cwd: '', base: '', path: './inventory.config.js', contents: new Buffer(appConfig)}));
+    this.push(null);
+  };
+
+  return appConfigSrc
+    .pipe(ngConstant({
+      name: 'InventoryModule',
+      deps: false
+    }))
+    .pipe(gulp.dest(config.buildDir));
+});
+
 var jshintedFiles = [
   'gulpfile.js',
   config.serverDir + '/**/*.js',
@@ -108,7 +130,7 @@ gulp.task('copyThirdPartyScripts', function() {
 });
 
 // copy app scripts to public dir
-gulp.task('copyAppScripts', function() {
+gulp.task('copyAppScripts', ['generateAppConfig'], function() {
   return gulp.src(config.assets.scripts.app)
     .pipe(cache('appScripts'))
     .pipe(gulpif(config.environment === 'production', uglify()))
@@ -206,7 +228,8 @@ gulp.task('watch', function() {
 gulp.task('clean', function() {
   del([
     config.siteDir + '/logs/*',
-    config.distDir + '/*'
+    config.distDir + '/*',
+    config.buildDir + '/*'
   ]);
 });
 

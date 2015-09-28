@@ -35,6 +35,7 @@ module.exports = function(section) {
     serverDir: siteDir + '/server',
     configDir: siteDir + '/config',
     publicDir: siteDir + '/public',
+    buildDir: siteDir + '/build',
     appDir: appDir,
     inventoryModuleDir: appDir + '/inventory',
     log: {
