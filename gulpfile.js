@@ -124,8 +124,8 @@ gulp.task('copyAppViews', function() {
 // copy third-party scripts to public dir
 gulp.task('copyThirdPartyScripts', function() {
   return gulp.src(config.assets.scripts.thirdParty)
-    .pipe(gulpif(config.environment === 'production', uglify()))
     .pipe(gulpif(config.environment === 'production', concat('third-party.min.js')))
+    .pipe(gulpif(config.environment === 'production', uglify()))
     .pipe(gulp.dest(config.distDir + '/js'));
 });
 
@@ -133,8 +133,8 @@ gulp.task('copyThirdPartyScripts', function() {
 gulp.task('copyAppScripts', ['generateAppConfig'], function() {
   return gulp.src(config.assets.scripts.app)
     .pipe(cache('appScripts'))
-    .pipe(gulpif(config.environment === 'production', uglify()))
     .pipe(gulpif(config.environment === 'production', concat('app.min.js')))
+    .pipe(gulpif(config.environment === 'production', uglify()))
     .pipe(gulp.dest(config.distDir + '/js'));
 });
 
