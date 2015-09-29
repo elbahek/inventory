@@ -47,7 +47,7 @@ module.exports = function(section) {
   };
 
   config.app = {
-    environment: environment
+    ENVIRONMENT: environment
   };
 
   var localConfig = {};

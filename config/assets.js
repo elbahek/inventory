@@ -31,6 +31,8 @@ module.exports = function(siteDir) {
       app: [
         inventoryModuleDir + '/inventory.module.js',
         buildDir + '/inventory.config.js',
+        inventoryModuleDir + '/inventory.constants.js',
+        inventoryModuleDir + '/inventory.setup.js',
         inventoryModuleDir + '/util/mixins/BodyClass.js',
         inventoryModuleDir + '/controllers/games.js'
       ]

@@ -77,7 +77,8 @@ gulp.task('copyMisc', function() {
 
 // generate angular app config from server config
 gulp.task('generateAppConfig', function() {
-  var appConfig = require('./config')('app');
+  var appConfigRaw = require('./config')('app');
+  var appConfig = {Config: appConfigRaw};
   appConfig = JSON.stringify(appConfig);
 
   var appConfigSrc = stream.Readable({objectMode: true});
